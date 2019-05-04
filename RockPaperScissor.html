@@ -1,38 +1,57 @@
+
 <html>
-    <script>
-        function computerPlay(playerSelection,computerSelection){
-            if(playerSelection == "ROCK" && computerSelection == "PAPER" || playerSelection == "SCISSORS" && computerSelection == "ROCK" 
-            || playerSelection == "PAPER" && computerSelection == "SCISSORS"){
-                return 1;
-            }
-            else{
-                return 0;
-            }
-        }
-        function game(){
-            round = 0
-            playerWins = 0
-            computerWins = 0
-            while(round <= 5){
-                playerChoice = prompt("Enter Rock, Paper or Scissor: ")
-                winner = computerPlay(playerChoice)
-                if(winner = 0){
-                    console.log()
-                    playerWins++
+    <head>
+        <script>
+            function computerPlay(playerSelection,computerSelection){
+                if(playerSelection == "ROCK" && computerSelection == "PAPER" || playerSelection == "SCISSORS" && computerSelection == "ROCK" 
+                || playerSelection == "PAPER" && computerSelection == "SCISSORS"){
+                    return 1;
                 }
                 else{
-                    console.log()
-                    computerWins++
+                    return 0;
                 }
+            }
+            function game(){
+                var round = 0;
+                var playerWins = 0;
+                var computerWins = 0;
+                var computerChoice = "";
                 
+                
+                while(round < 5){
+                    var randNum = Math.floor(Math.random() * 3);
+                    if(randNum== 1){
+                        computerChoice = "ROCK";
+                    }
+                    else if(randNum ==2){
+                        computerChoice = "PAPER";
+                    }
+                    else{
+                        computerChoice = "SCISSORS";
+                    }
+                    playerChoice = prompt("Enter Rock, Paper or Scissors: ");
+                    
+                    console.log(playerChoice);
+                    winner = computerPlay(playerChoice,computerChoice)
+                    if(winner == 0){
+                        console.log("You Win");
+                        playerWins= playerWins + 1;
+                    }
+                    else{
+                        console.log("You Lose");
+                        computerWins = computerWins +1;
+                    }
+                    round++;
+                
+                }
+                if(playerWins > computerWins){
+                    console.log("You Win!!!");
+                }
+                else{
+                    console.log("You Lose!!! :(");
+                }   
             }
-            if(playerWins > computerWins){
-                console.log("You Win!!!")
-            }
-            else{
-                console.log("You Lose!!! :(")
-            }
-        }
 
-    </script>
+        </script>
+    </head>
 </html>
