@@ -1,5 +1,26 @@
 
 document.querySelector("#container");
+var round = 0;
+var playerWins = 0;
+var computerWins = 0;
+const buttons = document.querySelectorAll('buttons');
+var pScore = document.getElementById("playerScore");
+var cScore = document.getElementById("computerScore");
+var res = document.getElementById("result");
+var rockBtn = document.getElementById("Rock");
+var scissorsBtn = document.getElementById("Scissors");
+var paperBtn = document.getElementById("Paper");
+
+rockBtn.addEventListener('click',()=>{
+    game("ROCK");
+});
+
+paperBtn.addEventListener('click',()=>{
+    game("PAPER");
+});
+scissorsBtn.addEventListener('click',()=>{
+    game("SCISSORS");
+});
 
 
 function computerPlay(playerSelection,computerSelection){
@@ -11,54 +32,47 @@ function computerPlay(playerSelection,computerSelection){
         return 0;
     }
 }
-var round = 0;
-var playerWins = 0;
-var computerWins = 0;
+
 
 function game(gamdId){
-    
+    console.log("Function called");
+    var playerChoice = gamdId
     var computerChoice = "";
     
     var randNum = Math.floor(Math.random() * 3);
     if(randNum == 1){
-        computerChoice = "Rock";
+        computerChoice = "ROCK";
     }
     else if(randNum == 2){
-        computerChoice = "Paper";
+        computerChoice = "PAPER";
     }
     else{
-        computerChoice = "Scissors";
+        computerChoice = "SCISSORS";
     }
    
     winner = computerPlay(playerChoice,computerChoice)
     if(winner == 0){
-        document.write("You Win");
+        
         playerWins= playerWins + 1;
+        pScore.textContent = "Player Score: "+playerWins
     }
     else{
-        document.write("You Lose");
+      
         computerWins = computerWins +1;
+        cScore.textContent = "Computer Score: "+computerWins
     }
     round++;
-    document.write("Round: ",round," ");
-    document.write("Computer Wins: ",computerWins," ");
-    document.write("Player Wins: ",playerWins," ");
+   
     
-    if(playerWins > computerWins){
-        document.write("You Win!!!");
+    if(playerWins >= 5 || computerWins >= 5){
+        if(playerWins>computerWins){
+            res.textContent = "You Win!!!";
+        }
+        else{
+            res.textContent = "You Lose :(";
+        }
+       
     }
-    else{
-        document.write("You Lose!!! :(");
-    }   
+    
 }
 
-const buttons = document.querySelectorAll('buttons');
-
-buttons.forEach((buttons) => {
-    buttons.addEventListener('click',(e) => {
-        game(buttons.id);
-    });
-});
-document.write("Round: ",round," ");
-document.write("Computer Wins: ",computerWins," ");
-document.write("Player Wins: ",playerWins," ");

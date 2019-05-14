@@ -1,57 +1,30 @@
 
 <html>
     <head>
-        <script>
-            function computerPlay(playerSelection,computerSelection){
-                if(playerSelection == "ROCK" && computerSelection == "PAPER" || playerSelection == "SCISSORS" && computerSelection == "ROCK" 
-                || playerSelection == "PAPER" && computerSelection == "SCISSORS"){
-                    return 1;
-                }
-                else{
-                    return 0;
-                }
-            }
-            function game(){
-                var round = 0;
-                var playerWins = 0;
-                var computerWins = 0;
-                var computerChoice = "";
-                
-                
-                while(round < 5){
-                    var randNum = Math.floor(Math.random() * 3);
-                    if(randNum== 1){
-                        computerChoice = "ROCK";
-                    }
-                    else if(randNum ==2){
-                        computerChoice = "PAPER";
-                    }
-                    else{
-                        computerChoice = "SCISSORS";
-                    }
-                    playerChoice = prompt("Enter Rock, Paper or Scissors: ");
-                    
-                    console.log(playerChoice);
-                    winner = computerPlay(playerChoice,computerChoice)
-                    if(winner == 0){
-                        console.log("You Win");
-                        playerWins= playerWins + 1;
-                    }
-                    else{
-                        console.log("You Lose");
-                        computerWins = computerWins +1;
-                    }
-                    round++;
-                
-                }
-                if(playerWins > computerWins){
-                    console.log("You Win!!!");
-                }
-                else{
-                    console.log("You Lose!!! :(");
-                }   
-            }
-
-        </script>
+        
+        <style type = "text/css" src = "RockPaperScissor.css" ></style>
     </head>
+    <body>
+        <div id = "container">
+            
+
+                <h3>Choose Rock, Paper, or Scissors!</h3>
+                <h5 id= "playerScore">Player Score: 0</h5>
+                <h5 id= "computerScore">Computer Score: 0</h5>
+                <h5 id="result"></h5>
+                <div class = "buttons">
+                    <button id = "Rock">Rock</button>
+                    <button id = "Paper">Paper</button>
+                    <button id = "Scissors">Scissors</button>
+                </div>
+
+                <div id = "results">
+            
+            </div>
+            
+        </div>
+    </body>
+   <footer>
+    <script type="text/javascript" src = "RockPaperScissor.js"></script>
+   </footer>
 </html>
